@@ -30,6 +30,8 @@ add_library(ShaderGLLib
     ${PROJECT_SOURCE_DIR}/ShaderGLLib/Light.h
     ${PROJECT_SOURCE_DIR}/ShaderGLLib/Mesh.cpp
     ${PROJECT_SOURCE_DIR}/ShaderGLLib/Mesh.h
+    ${PROJECT_SOURCE_DIR}/ShaderGLLib/Material.cpp
+    ${PROJECT_SOURCE_DIR}/ShaderGLLib/Material.h
     ${PROJECT_SOURCE_DIR}/ShaderGLLib/Pixel.cpp
     ${PROJECT_SOURCE_DIR}/ShaderGLLib/Pixel.h
     ${PROJECT_SOURCE_DIR}/ShaderGLLib/Program.cpp
