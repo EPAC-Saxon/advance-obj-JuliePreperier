@@ -66,6 +66,10 @@ namespace sgl {
 		error_.Display(__FILE__, __LINE__ - 10);
 	}
 
+	Texture::Texture(const std::pair<std::uint32_t, std::uint32_t> size, const void* data, const PixelElementSize pixel_element_size, const PixelStructure pixel_structure)
+	{
+	}
+
 	Texture::Texture(
 		const std::pair<std::uint32_t, std::uint32_t> size, 
 		const PixelElementSize pixel_element_size /*= PixelElementSize::BYTE*/, 

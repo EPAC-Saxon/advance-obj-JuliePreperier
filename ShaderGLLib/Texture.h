@@ -18,6 +18,11 @@ namespace sgl {
 	class Texture 
 	{
 	public:
+		Texture(
+			const std::pair<std::uint32_t, std::uint32_t> size,
+			const void* data,
+			const PixelElementSize pixel_element_size = PixelElementSize::BYTE,
+			const PixelStructure pixel_structure = PixelStructure::RGB);
 		// Create an empty texture of size size.
 		Texture(
 			const std::pair<std::uint32_t, std::uint32_t> size,

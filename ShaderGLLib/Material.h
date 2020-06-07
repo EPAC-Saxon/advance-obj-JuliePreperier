@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include "Error.h"
+#include "Texture.h"
 
 
 namespace sgl {
@@ -12,14 +13,39 @@ namespace sgl {
 	class Material
 	{
 	public:
+		Material(std::shared_ptr<Texture> ambient, 
+				 std::shared_ptr<Texture> color,
+				 std::shared_ptr<Texture> normal,
+				 std::shared_ptr<Texture> roughness,
+				 std::shared_ptr<Texture> metallic);
+		
+		std::shared_ptr<Texture> GetAmbient();
+		std::shared_ptr<Texture> GetColor();
+		std::shared_ptr<Texture> GetNormal();
+		std::shared_ptr<Texture> GetRoughness();
+		std::shared_ptr<Texture> GetMetallic();
 
 
-	private:
-		std::map<std::string, std::shared_ptr<Material>> material_;
+		void SetAmbient(std::shared_ptr<Texture> ambient);
+		void SetColor(std::shared_ptr<Texture> color);
+		void SetNormal(std::shared_ptr<Texture> normal);
+		void SetRoughness(std::shared_ptr<Texture> roughness);
+		void SetMetallic(std::shared_ptr<Texture> metallic);
+
+
+	protected:
+		
+		std::shared_ptr<Texture> ambient_;
+		std::shared_ptr<Texture> color_;
+		std::shared_ptr<Texture> normal_;
+		std::shared_ptr<Texture> roughness_;
+		std::shared_ptr<Texture> metallic_;
 		// Error setup.
 		const Error& error_ = Error::GetInstance();
+
 	};
 
+	std::map<std::string, std::shared_ptr<Material>> LoadMatFromMtl(std::string file);
 	// avoir texture dans map sharedptr texture 5x
 	// couleur, normal, roughness, ambiantOcclusion, metallic
 	// constructor avec els 5 text
@@ -35,4 +61,4 @@ namespace sgl {
 	// auto obj_file = LoadFromObj(file); -> charge un objFile 
 	// autre programme depuis exterieur qui va couper le texte
 
-}	// End of namespace sgl.
+}

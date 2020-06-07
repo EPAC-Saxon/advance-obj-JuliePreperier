@@ -16,6 +16,12 @@ namespace sgl {
 	class Mesh
 	{
 	public:
+		// Open a mesh from a OBJ stream.
+		Mesh(
+			std::istream& is,
+			const std::string& name,
+			const std::shared_ptr<Program>& program);
+
 		Mesh(const std::string& file, const std::shared_ptr<Program>& program);
 		Mesh(
 			const std::vector<float>& points,
@@ -45,6 +51,7 @@ namespace sgl {
 		const size_t IndexSize() const { return index_size_; }
 		const std::shared_ptr<Program> GetProgram() { return program_; }
 		void ClearDepthBuffer(bool clear) { clear_depth_buffer_ = clear; }
+		const std::string GetMaterialName() const { return material_name_; }
 		
 	protected:
 		struct ObjFile {
@@ -73,6 +80,7 @@ namespace sgl {
 		size_t index_size_ = 0;
 		unsigned int vertex_array_object_ = 0;
 		const Error& error_ = Error::GetInstance();
+		std::string material_name_ = "";
 	};
 
 	// Create a Quad Mesh that is on the edge of the screen.
@@ -81,6 +89,10 @@ namespace sgl {
 
 	// Create a Cube Mesh that correspond to a cube map.
 	std::shared_ptr<Mesh> CreateCubeMesh(
+		const std::shared_ptr<Program>& program);
+
+	std::shared_ptr<Mesh> CreateMeshFromObjFile(
+		const std::string& file_path,
 		const std::shared_ptr<Program>& program);
 
 } // End namespace sgl.

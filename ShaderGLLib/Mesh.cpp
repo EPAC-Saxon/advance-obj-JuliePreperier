@@ -5,6 +5,10 @@
 #include <GL/glew.h>
 
 namespace sgl {
+	Mesh::Mesh(std::istream& is, const std::string& name, const std::shared_ptr<Program>& program)
+	{
+
+	}
 
 	Mesh::Mesh(const std::string& file, const std::shared_ptr<Program>& program)
 	{
@@ -43,7 +47,6 @@ namespace sgl {
 		CreateMeshFromFlat(points, normals, texcoords, indices);
 	}
 
-	
 	Mesh::Mesh(
 		const std::vector<float>& points,
 		const std::vector<float>& normals,
@@ -80,7 +83,6 @@ namespace sgl {
 		}
 		program_ = program;
 	}
-
 
 	void Mesh::CreateMeshFromFlat(
 		const std::vector<float>& points,
@@ -401,6 +403,11 @@ namespace sgl {
 		const std::shared_ptr<Program>& program)
 	{
 		return std::make_shared<Mesh>("../Asset/Model/Cube.obj", program);
+	}
+
+	std::shared_ptr<Mesh> CreateMeshFromObjFile(const std::string& file_path, const std::shared_ptr<Program>& program)
+	{
+		return std::shared_ptr<Mesh>();
 	}
 
 } // End namespace sgl.
